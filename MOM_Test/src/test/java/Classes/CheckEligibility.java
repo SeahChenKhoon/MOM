@@ -17,7 +17,7 @@ public class CheckEligibility extends Web_Driver {
 	public void ClickNoForAllOptions()
 	{
 		List<WebElement> webElements = driver.findElements(By.xpath("//div[@class='controls bgp-radio-text-format']/label[2]/span[2]"));
-		for (WebElement webElement: webElements)
+		for (WebElement webElement: webElements) 
 		{
 			webElement.click();
 		}
