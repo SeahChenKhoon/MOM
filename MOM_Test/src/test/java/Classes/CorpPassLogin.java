@@ -29,19 +29,23 @@ public class CorpPassLogin extends Web_Driver {
 	}
 	
 	public void ValidateNRIC() {
-		log.error("Invalid NRIC Not Checked"); 
+		log.error("Test Case Number: " + GetTestCase());
+		log.error("Invalid NRIC Not Checked");
 	}
 
 	public void ValidateName() {
-		log.error("Invalid Name Not Checked"); 
+		log.error("Test Case Number: " + GetTestCase());
+		log.error("Invalid Name Not Checked");
+
 	}
 
 	public void ValidateEnv() {
-		log.error("Invalid UEN Not Checked"); 
+		log.error("Test Case Number: " + GetTestCase());
+		log.error("Invalid UEN Not Checked");
 	}
 
 	public void ValidateRole() {
-		log.error("Invalid Role Not Checked"); 
+		log.error("Test Case Number: " + GetTestCase());
+		log.error("Invalid Role Not Checked");
 	}
-
 }

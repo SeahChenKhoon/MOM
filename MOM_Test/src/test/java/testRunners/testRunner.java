@@ -10,7 +10,9 @@ import cucumber.api.junit.Cucumber;
 		features = "src/test/java/features/MOM.feature",
 		glue="StepDefinitions",
 		monochrome=true,
-		plugin= {"html:Reports\\HTMLReports"},
+		plugin= {"html:target\\HTMLReports",
+				"rerun:target/cucumber/rerun.txt"
+		},
 		dryRun=false,
 		strict=true
 		)

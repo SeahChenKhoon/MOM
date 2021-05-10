@@ -45,9 +45,9 @@ public class ContactDetails extends Web_Driver{
 		String pageStreetName = driver.findElement(By.xpath("//input[@id='react-contact_info-correspondence_address-street']")).getAttribute("value");
 		if (!blkNumber.toUpperCase().equals(pageBlkNumber) || !streetName.toUpperCase().equals(pageStreetName))
 		{
-			log.error("Invalid Postal Code");
+			log.error("Test Case Number: " + GetTestCase());
 			log.error("Expected blk number " + blkNumber + " \nPage blk number " + pageBlkNumber);
-			log.error("Expected street name " + blkNumber + " \nPage Street Name " + pageBlkNumber);
+			log.error("Expected street name " + streetName + " \nPage Street Name " + pageStreetName);
 		}
 	}
 

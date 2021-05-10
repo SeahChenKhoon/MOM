@@ -10,50 +10,59 @@ import Classes.GrantAction;
 import Classes.Login;
 import Classes.MyGrant;
 import Classes.NewGrant;
+import Classes.SubmitYourProposal;
 import Classes.Web_Driver;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import jdk.internal.org.jline.utils.Log;
+import pageFactory.CorpPassPage_PF;
+import pageFactory.LoginPage_PF;
+import pageFactory.MyGrant_PF;
+import pageFactory.NewGrant_PF;
 
 public class StepDefinition extends Web_Driver{
 
 	@Given("^Applicant Navigates to website \"([^\"]*)\", Test_case \"([^\"]*)\"$")
 	public void applicant_Navigates_to_website_Test_case(String url, String testCase) throws Throwable {
-		// In Login Page the user clicks on login
-		Login login_page = new Login(url);
-		login_page.login_clicked(testCase);
-		login_page =null; 
+		LoginPage_PF loginPage_PF= new LoginPage_PF(url);
+		loginPage_PF.writeCaseID(testCase);
+		loginPage_PF.waitPage();
+		loginPage_PF.clickLogin();
+		loginPage_PF =null;
 
 	}
 	@When("^He logs into BGP with CorpPass NRIC \"([^\"]*)\", Name \"([^\"]*)\", UEN \"([^\"]*)\", Role \"([^\"]*)\"$")
-	public void he_logs_into_BGP_with_CorpPass_NRIC_Name_Env_Role(String nric, String name, String UEN, String role) throws Throwable {
-		// Wait for CorpPass Page to appear
-		CorpPassLogin corpPassLogin = new CorpPassLogin();
-		corpPassLogin.pageWait();
-		// In CorpPass Page the user clicks on login
-		corpPassLogin.login(nric, name, UEN, role);
-		corpPassLogin =null; 
+	public void he_logs_into_BGP_with_CorpPass_NRIC_Name_Env_Role(String nric, String name, String uen, String role) throws Throwable {
+		
+		CorpPassPage_PF corpPassPage_PF = new CorpPassPage_PF(); 		
+		corpPassPage_PF.pageWait();
+		corpPassPage_PF.clearNric();
+		corpPassPage_PF.inputNric(nric);
+		corpPassPage_PF.clearName();
+		corpPassPage_PF.inputName(name);
+		corpPassPage_PF.clearUen();
+		corpPassPage_PF.inputUen(uen);
+		corpPassPage_PF.selectRole(role);
+		corpPassPage_PF.clickLogin();
+		corpPassPage_PF = null;
 	}
 
 	@When("^He selects 'Get New Grant' on the 'My Grants' dashboard to enter the Grant Picker$")
 	public void he_selects_Get_New_Grant_on_the_My_Grants_dashboard_to_enter_the_Grant_Picker() throws Throwable {
 		// Wait for My Grant Page to appear
-		MyGrant myGrant = new  MyGrant();
-		myGrant.pageWait();
-		// In My Grant Page the user clicks on Apply New Grant
-		myGrant.ClickGetNewGrant();	    
-		myGrant = null;
+		MyGrant_PF myGrant_PF = new MyGrant_PF();
+		myGrant_PF.pageWait();
+		myGrant_PF.clickGetNewGrant();	    
+		myGrant_PF = null;
 	}
 
 	@When("^He clicks on a sector for your business \"([^\"]*)\"$")
 	public void he_clicks_on_a_sector_for_your_business(String sector) throws Throwable {
-		NewGrant newGrant = new NewGrant();
-		// Wait for Sector Page to Appear
+		NewGrant newGrant = new NewGrant();		
 		newGrant.pageWait();
-		// He Clicks on the Sector
 		newGrant.SelectSector(sector);
-		newGrant =null; 
+		newGrant = null;
 	}
 
 	@When("^He clicks on a sector for your business Sector \"([^\"]*)\", SubSector \"([^\"]*)\"$")
@@ -198,6 +207,14 @@ public class StepDefinition extends Web_Driver{
 		contactDetails = null;	
 	}
 
+	@When("^He clicks on Activity$")
+	public void he_clicks_on_Activity() throws Throwable {
+	    // He clicks on Activity
+	    SubmitYourProposal submitYourProposal = new SubmitYourProposal();
+	    submitYourProposal.SelectActivity();
+	    submitYourProposal = null;
+	}
+	
 	@Then("^System verifies validity NRIC$")
 	public void system_verifies_validity_NRIC() throws Throwable {	
 		CorpPassLogin corpPassLogin = new CorpPassLogin();
@@ -228,11 +245,11 @@ public class StepDefinition extends Web_Driver{
 		corpPassLogin= null;
 	}
 
-	@Then("^Close Browser$")
+	@When("^Close Browser$")
 	public void close_Browser() throws Throwable {
-		Login login_page = new Login();
-		login_page.CloseBroswer();
-		login_page = null;
+		LoginPage_PF LoginPage_PF = new LoginPage_PF();
+		LoginPage_PF.closeBrowser();
+		LoginPage_PF = null;
 	}
 
 }

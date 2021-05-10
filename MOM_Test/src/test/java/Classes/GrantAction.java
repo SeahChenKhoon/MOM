@@ -12,15 +12,15 @@ public class GrantAction extends Web_Driver {
 		}
 		catch(Exception e)
 		{
+			log.error("Test Case Number: " + GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
-			log.error(e.getStackTrace());
+			log.error("TraceLog:\n" + e.getStackTrace());
 		}
 	}
 	
 	public void Proceed_Clicked() throws InterruptedException
 	{
-		Thread.sleep(1000L);
 		driver.findElement(By.xpath("//button[@id='keyPage-form-button']")).click();
 	}
 }
