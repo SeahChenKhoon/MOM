@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class GrantAction extends Web_Driver {
-	public void pageWait() throws InterruptedException
+/*	public void pageWait() throws InterruptedException
 	{
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='keyPage-form-button']")));		
@@ -22,5 +22,5 @@ public class GrantAction extends Web_Driver {
 	public void Proceed_Clicked() throws InterruptedException
 	{
 		driver.findElement(By.xpath("//button[@id='keyPage-form-button']")).click();
-	}
+	}*/
 }

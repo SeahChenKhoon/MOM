@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NewGrant extends Web_Driver  {
-	public void SelectSector(String sector)
+/*	public void SelectSector(String sector)
 	{
 		// He Clicks on the Sector
 		driver.findElement(By.xpath("//input[@id='" + sector + "']")).click();
@@ -78,5 +78,5 @@ public class NewGrant extends Web_Driver  {
 	{
 		//Wait for Page to be ready
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='bgp-applyquestion-taxonomy col-sm-12']")));	
-	}
+	}*/
 }

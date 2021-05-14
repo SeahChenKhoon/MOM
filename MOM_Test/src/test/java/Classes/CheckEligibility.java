@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CheckEligibility extends Web_Driver {
 
-	public void pageWait()
+/*	public void pageWait()
 	{
 		//Wait for Page to be ready
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[@class='control-label bgp-label']")));	
@@ -40,5 +40,5 @@ public class CheckEligibility extends Web_Driver {
 	public void Save_Click()
 	{
 		driver.findElement(By.xpath("//button[@id='save-btn']")).click();
-	}
+	}*/
 }

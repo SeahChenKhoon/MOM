@@ -6,17 +6,14 @@ package StepDefinitions;
 import Classes.CheckEligibility;
 import Classes.ContactDetails;
 import Classes.CorpPassLogin;
-import Classes.GrantAction;
-import Classes.Login;
-import Classes.MyGrant;
-import Classes.NewGrant;
 import Classes.SubmitYourProposal;
 import Classes.Web_Driver;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import jdk.internal.org.jline.utils.Log;
+import pageFactory.CheckEligibility_PF;
 import pageFactory.CorpPassPage_PF;
+import pageFactory.GrantAction_PF;
 import pageFactory.LoginPage_PF;
 import pageFactory.MyGrant_PF;
 import pageFactory.NewGrant_PF;
@@ -27,11 +24,12 @@ public class StepDefinition extends Web_Driver{
 	public void applicant_Navigates_to_website_Test_case(String url, String testCase) throws Throwable {
 		LoginPage_PF loginPage_PF= new LoginPage_PF(url);
 		loginPage_PF.writeCaseID(testCase);
-		loginPage_PF.waitPage();
+		loginPage_PF.pageWait();
 		loginPage_PF.clickLogin();
 		loginPage_PF =null;
 
 	}
+	
 	@When("^He logs into BGP with CorpPass NRIC \"([^\"]*)\", Name \"([^\"]*)\", UEN \"([^\"]*)\", Role \"([^\"]*)\"$")
 	public void he_logs_into_BGP_with_CorpPass_NRIC_Name_Env_Role(String nric, String name, String uen, String role) throws Throwable {
 		
@@ -59,68 +57,65 @@ public class StepDefinition extends Web_Driver{
 
 	@When("^He clicks on a sector for your business \"([^\"]*)\"$")
 	public void he_clicks_on_a_sector_for_your_business(String sector) throws Throwable {
-		NewGrant newGrant = new NewGrant();		
-		newGrant.pageWait();
-		newGrant.SelectSector(sector);
-		newGrant = null;
+		NewGrant_PF newGrant_PF = new NewGrant_PF();		
+		newGrant_PF.pageWait();
+		newGrant_PF.SelectSector(sector);
+		newGrant_PF = null;
 	}
 
 	@When("^He clicks on a sector for your business Sector \"([^\"]*)\", SubSector \"([^\"]*)\"$")
 	public void he_clicks_on_a_sector_for_your_business_Sector_SubSector(String sector, String subSector) throws Throwable {
-		NewGrant newGrant = new NewGrant();		
+		NewGrant_PF newGrant_PF = new NewGrant_PF();		
 		// Wait for Sector Page to Appear
-		newGrant.pageWait();
+		newGrant_PF.pageWait();
 		// He Clicks on the Sector
-		newGrant.SelectSector(sector, subSector);
-		newGrant =null; 
+		newGrant_PF.SelectSector(sector, subSector);
+		newGrant_PF =null; 
 	}
 
 
 	@Given("^He clicks on Development Area \"([^\"]*)\" button$")
 	public void he_clicks_on_Development_Area_button(String grantUse) throws Throwable {
-		NewGrant newGrant = new NewGrant();
+		NewGrant_PF newGrant_PF = new NewGrant_PF();
 		// Wait for Development Area to Appear
-		newGrant.pageWait();
+		newGrant_PF.pageWait();
 		// He Clicks on the Development Area
-		newGrant.SelectDevelopmentArea(grantUse);
-		newGrant =null;
+		newGrant_PF.SelectDevelopmentArea(grantUse);
+		newGrant_PF =null;
 	}
 
 	@Given("^He clicks on Functional Area \"([^\"]*)\" button$")
 	public void he_clicks_on_Functional_Area_button(String grantPurpose) throws Throwable {
-		NewGrant newGrant = new NewGrant();
+		NewGrant_PF newGrant_PF = new NewGrant_PF();
 		// Wait for Functional Page to Appear
-		newGrant.pageWait();		
+		newGrant_PF.pageWait();		
 		// He Clicks on the Functional Area
-		newGrant.SelectFunctionalArea(grantPurpose);
-		newGrant =null;
+		newGrant_PF.SelectFunctionalArea(grantPurpose);
+		newGrant_PF =null;
 	}
 
 	@Given("^He clicks on 'Proceed' button to enter the form$")
 	public void he_clicks_on_Proceed_button_to_enter_the_form() throws Throwable {
 		// He Clicks on Proceed
-		GrantAction grantAction = new GrantAction();
-		log.debug("Before Wait");
-		grantAction.pageWait();
-		log.debug("After Wait");		
-		grantAction.Proceed_Clicked();
-		log.debug("After Proceed");		
-		grantAction = null;
+		GrantAction_PF grantAction_PF = new GrantAction_PF();
+		grantAction_PF.pageWait();
+		grantAction_PF.Proceed_Clicked();
+		grantAction_PF = null;
 	}
 
 	@Given("^He clicks on \"([^\"]*)\" in all Option in CHECK YOUR ELIGIBILITY form$")
 	public void he_clicks_on_in_all_Option_in_CHECK_YOUR_ELIGIBILITY_form(String option) throws Throwable {
-		CheckEligibility checkEligibility = new CheckEligibility();
+		CheckEligibility_PF checkEligibility_PF = new CheckEligibility_PF();
 		// Wait for Check For CheckEligibility Page to Appear	
-		checkEligibility.pageWait();
+		checkEligibility_PF.pageWait();
 		//Set Radio Button to Yes/No
 		if (option.toUpperCase().equals("NO") )
-			checkEligibility.ClickNoForAllOptions();
+			checkEligibility_PF.ClickNoForAllOptions();
 		else
-			checkEligibility.ClickYesForAllOptions();
-		checkEligibility.Save_Click();
-		checkEligibility.Next_Click();
-		checkEligibility = null;
+			checkEligibility_PF.ClickYesForAllOptions();
+//		checkEligibility_PF.Save_Click();
+//		checkEligibility_PF.Next_Click();
+		checkEligibility_PF = null;
 	}
 
 	@When("^He inputs Name \"([^\"]*)\", Job Title \"([^\"]*)\" , Contact No \"([^\"]*)\", Email \"([^\"]*)\"$")

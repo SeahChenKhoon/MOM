@@ -15,7 +15,7 @@ import pageFactory.Log;
 public class Web_Driver {
 	protected static WebDriver driver;
 	protected static WebDriverWait wait;
-	protected static Logger log = Logger.getLogger(StepDefinition.class);
+	protected static Logger log = Logger.getLogger("Hello World");
 	private static String testCaseNumber;
 	
 	private static boolean root=false;
@@ -26,8 +26,9 @@ public class Web_Driver {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(url);
-		wait = new WebDriverWait(driver, 60);
+		wait = new WebDriverWait(driver, 30);
 		log = getLogger(Logger.class);
+
 	}
 	
 
@@ -52,20 +53,5 @@ public class Web_Driver {
 		return Logger.getLogger(cls);
 	}
 
-	public Boolean pageWait(WebElement lblPage)
-	{
-		try
-		{
-			//Wait for Page Label to appear
-			wait.until(ExpectedConditions.visibilityOf(lblPage)).getText();
-			return true;
-		}
-		catch (Exception e)
-		{
-			log.error("This is the Exception error: " + e.getMessage());
-			log.error("This is the Exception cause: " + e.getCause());
-			log.error(e.getStackTrace());
-			return false;
-		}
-	}
+
 }

@@ -1,33 +1,27 @@
 package pageFactory;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 
 import Classes.Web_Driver;
 
-public class CorpPassPage_PF extends Web_Driver  {
-	@FindBy(xpath="//div[@class='base-container']/h1")
+public class NewGrant_PF extends Web_Driver {
+	@FindBy(xpath="//div[@class='bgp-applyquestion-taxonomy col-sm-12']")
 	WebElement lblPage;
 
-	@FindBy(name="CPUID")
-	WebElement txtNRIC;
+	@FindBys(@FindBy(xpath="//div[@class='col-sm-12']"))
+	List<WebElement> btnGrantInfo;
 
-	@FindBy(name="CPUID_FullName")
-	WebElement txtName;
+	@FindBy(xpath="//button[@class='bgp-btn bgp-btn-regular apply-submit']")
+	WebElement btnNext;
 
-	@FindBy(name="CPEntID")
-	WebElement txtUen;
-
-	@FindBy(name="CPRole")
-	WebElement lstboxRole;
-
-	@FindBy(xpath="//button[@type='submit']")
-	WebElement btnLogin;
-
-	public CorpPassPage_PF() {
+	public NewGrant_PF() {
 		try
 		{
 			// Initialise Web Element of the Page 
@@ -41,7 +35,6 @@ public class CorpPassPage_PF extends Web_Driver  {
 			log.error(e.getStackTrace());
 		}
 	}
-
 	public  Boolean pageWait()
 	{
 		try
@@ -60,90 +53,11 @@ public class CorpPassPage_PF extends Web_Driver  {
 			return false;
 		}
 	}
-	
-	public void clearNric() {
-		try {
-			txtNRIC.clear();
-		}
-		catch (Exception e)
-		{
-			log.error("Test Case Number: " + super.GetTestCase());
-			log.error("This is the Exception error: " + e.getMessage());
-			log.error("This is the Exception cause: " + e.getCause());
-			log.error(e.getStackTrace());
-		}
-	}
-
-	public void inputNric(String nric) {
-		try {
-			txtNRIC.sendKeys(nric);
-		}
-		catch (Exception e)
-		{
-			log.error("Test Case Number: " + super.GetTestCase());
-			log.error("This is the Exception error: " + e.getMessage());
-			log.error("This is the Exception cause: " + e.getCause());
-			log.error(e.getStackTrace());
-		}
-	}
-
-	public void clearName() {
-		try {
-			txtName.clear();
-		}
-		catch (Exception e)
-		{
-			log.error("Test Case Number: " + super.GetTestCase());
-			log.error("This is the Exception error: " + e.getMessage());
-			log.error("This is the Exception cause: " + e.getCause());
-			log.error(e.getStackTrace());
-		}
-	}
-
-	public void inputName(String name) {
-		try {
-			txtName.sendKeys(name);
-		}
-		catch (Exception e)
-		{
-			log.error("Test Case Number: " + super.GetTestCase());
-			log.error("This is the Exception error: " + e.getMessage());
-			log.error("This is the Exception cause: " + e.getCause());
-			log.error(e.getStackTrace());
-		}
-	}
-
-	public void clearUen() {
-		try {
-			txtUen.clear();
-		}
-		catch (Exception e)
-		{
-			log.error("Test Case Number: " + super.GetTestCase());
-			log.error("This is the Exception error: " + e.getMessage());
-			log.error("This is the Exception cause: " + e.getCause());
-			log.error(e.getStackTrace());
-		}
-	}
-
-	public void inputUen(String uen) {
-		try{
-			txtUen.sendKeys(uen);
-		}
-		catch (Exception e)
-		{
-			log.error("Test Case Number: " + super.GetTestCase());
-			log.error("This is the Exception error: " + e.getMessage());
-			log.error("This is the Exception cause: " + e.getCause());
-			log.error(e.getStackTrace());
-		}
-	}
-
-	public void selectRole(String role)
+	public void SelectSector(String sector)
 	{
 		try {
-			Select dropdown = new Select(lstboxRole);
-			dropdown.selectByVisibleText(role);
+			// He Clicks on the Sector
+			driver.findElement(By.xpath("//input[@id='" + sector + "']")).click();
 		}
 		catch (Exception e)
 		{
@@ -154,10 +68,20 @@ public class CorpPassPage_PF extends Web_Driver  {
 		}
 	}
 
-	public void clickLogin()
+	public void SelectSector(String sector,String subSector)
 	{
 		try {
-			btnLogin.click();
+			// He Clicks on the Sector
+			driver.findElement(By.xpath("//input[@id='" + sector + "']")).click();
+			if (!subSector.equals(""))
+			{
+				List<WebElement> webElements = driver.findElements(By.xpath("//input[@id='" + sector + "']/parent::label//parent::div/div/ul/li"));
+				for (WebElement webElement: webElements)
+				{
+					webElement.findElement(By.xpath("//input[@id='" + subSector + "']")).click();
+					break;
+				}
+			}
 		}
 		catch (Exception e)
 		{
@@ -168,24 +92,61 @@ public class CorpPassPage_PF extends Web_Driver  {
 		}
 	}
 
-	public void ValidateNRIC() {
-		log.error("Test Case Number: " + GetTestCase());
-		log.error("Invalid NRIC Not Implemented");
+	public void SelectGrant(String grantName)
+	{
+		try {
+
+			// He Clicks on the GrantName
+			driver.findElement(By.xpath("//input[@id='" + grantName + "']")).click();
+		}
+		catch (Exception e)
+		{
+			log.error("Test Case Number: " + super.GetTestCase());
+			log.error("This is the Exception error: " + e.getMessage());
+			log.error("This is the Exception cause: " + e.getCause());
+			log.error(e.getStackTrace());
+		}
 	}
 
-	public void ValidateName() {
-		log.error("Test Case Number: " + GetTestCase());
-		log.error("Invalid Name Not Implemented");
-
+	public void SelectDevelopmentArea(String grantUse)
+	{
+		try {
+			for (WebElement webElement: btnGrantInfo)
+			{
+				if (webElement.getText().contains(grantUse))
+				{
+					webElement.click();
+					break;
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			log.error("Test Case Number: " + super.GetTestCase());
+			log.error("This is the Exception error: " + e.getMessage());
+			log.error("This is the Exception cause: " + e.getCause());
+			log.error(e.getStackTrace());
+		}
 	}
-
-	public void ValidateEnv() {
-		log.error("Test Case Number: " + GetTestCase());
-		log.error("Invalid UEN Not Implemented");
-	}
-
-	public void ValidateRole() {
-		log.error("Test Case Number: " + GetTestCase());
-		log.error("Invalid Role Not Implemented");
+	public void SelectFunctionalArea(String purposeOfGrant)
+	{
+		try {	
+			for (WebElement webElement: btnGrantInfo)
+			{
+				if (webElement.getText().contains(purposeOfGrant))
+				{
+					webElement.click();
+					btnNext.click();
+					break;
+				}
+			}		
+		}
+		catch (Exception e)
+		{ 
+			log.error("Test Case Number: " + super.GetTestCase());
+			log.error("This is the Exception error: " + e.getMessage());
+			log.error("This is the Exception cause: " + e.getCause());
+			log.error(e.getStackTrace());
+		}
 	}
 }
