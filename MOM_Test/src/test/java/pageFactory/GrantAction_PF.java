@@ -1,5 +1,8 @@
 package pageFactory;
 
+import java.io.IOException;
+
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -16,21 +19,23 @@ public class GrantAction_PF extends Web_Driver  {
 	@FindBy(xpath="//button[@id='keyPage-form-button']")
 	WebElement btnProceed;
 
-	public GrantAction_PF() {
+	public GrantAction_PF() throws IOException {
 		try
 		{
 			PageFactory.initElements(driver, this);
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());			
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 		}
 	}
 	
-	public  Boolean pageWait()
+	public  Boolean pageWait() throws IOException
 	{
 		try
 		{
@@ -41,26 +46,29 @@ public class GrantAction_PF extends Web_Driver  {
 		
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 			return false;
 		}
 	}
 
-	public void Proceed_Clicked() throws InterruptedException
+	public void Proceed_Clicked() throws InterruptedException, IOException
 	{
 		try {
-			System.out.println("Hello World " + lblPage.getText());
 			btnProceed.click();
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 		}
 	}
 }

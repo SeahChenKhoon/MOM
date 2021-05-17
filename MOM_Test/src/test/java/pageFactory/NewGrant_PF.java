@@ -1,7 +1,9 @@
 package pageFactory;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,7 +23,7 @@ public class NewGrant_PF extends Web_Driver {
 	@FindBy(xpath="//button[@class='bgp-btn bgp-btn-regular apply-submit']")
 	WebElement btnNext;
 
-	public NewGrant_PF() {
+	public NewGrant_PF() throws IOException {
 		try
 		{
 			// Initialise Web Element of the Page 
@@ -29,13 +31,15 @@ public class NewGrant_PF extends Web_Driver {
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 		}
 	}
-	public  Boolean pageWait()
+	public  Boolean pageWait() throws IOException
 	{
 		try
 		{
@@ -46,14 +50,16 @@ public class NewGrant_PF extends Web_Driver {
 		
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 			return false;
 		}
 	}
-	public void SelectSector(String sector)
+	public void SelectSector(String sector) throws IOException
 	{
 		try {
 			// He Clicks on the Sector
@@ -61,14 +67,16 @@ public class NewGrant_PF extends Web_Driver {
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 		}
 	}
 
-	public void SelectSector(String sector,String subSector)
+	public void SelectSector(String sector,String subSector) throws IOException
 	{
 		try {
 			// He Clicks on the Sector
@@ -85,14 +93,16 @@ public class NewGrant_PF extends Web_Driver {
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 		}
 	}
 
-	public void SelectGrant(String grantName)
+	public void SelectGrant(String grantName) throws IOException
 	{
 		try {
 
@@ -101,14 +111,16 @@ public class NewGrant_PF extends Web_Driver {
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 		}
 	}
 
-	public void SelectDevelopmentArea(String grantUse)
+	public void SelectDevelopmentArea(String grantUse) throws IOException
 	{
 		try {
 			for (WebElement webElement: btnGrantInfo)
@@ -122,13 +134,15 @@ public class NewGrant_PF extends Web_Driver {
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 		}
 	}
-	public void SelectFunctionalArea(String purposeOfGrant)
+	public void SelectFunctionalArea(String purposeOfGrant) throws IOException
 	{
 		try {	
 			for (WebElement webElement: btnGrantInfo)
@@ -143,10 +157,12 @@ public class NewGrant_PF extends Web_Driver {
 		}
 		catch (Exception e)
 		{ 
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 		}
 	}
 }

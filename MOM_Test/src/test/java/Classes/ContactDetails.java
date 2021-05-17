@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class ContactDetails extends Web_Driver{
-	public void pageWait()
+/*	public void pageWait()
 	{
 		//Wait for Page to be ready
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='react-contact_info-designation']")));	
@@ -69,5 +69,5 @@ public class ContactDetails extends Web_Driver{
 
 	public void Next_Click() {
 		driver.findElement(By.xpath("//button[@id='next-btn']")).click();
-	}
+	}*/
 }

@@ -1,18 +1,23 @@
 package Classes;
 
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import StepDefinitions.StepDefinition;
-import pageFactory.Log;
+import Utilities.ReadConfig;
 
-public class Web_Driver {
+
+
+public class Web_Driver  {
 	protected static WebDriver driver;
 	protected static WebDriverWait wait;
 	protected static Logger log = Logger.getLogger("Hello World");
@@ -22,7 +27,8 @@ public class Web_Driver {
 	@SuppressWarnings("deprecation")
 	protected void initialiseDriver(String url)
 	{
-		System.setProperty("webdriver.chrome.driver", "D:\\seah\\eclipse\\Driver\\chromedriver.exe");
+		ReadConfig readConfig = new ReadConfig();
+		System.setProperty("webdriver.chrome.driver", readConfig.getChromePath());
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(url);
@@ -53,5 +59,10 @@ public class Web_Driver {
 		return Logger.getLogger(cls);
 	}
 
-
+	public static void TakeScreenShot (String filename) throws IOException
+	{
+		File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(screenshotFile, new File(".//screenshot/screen_" + filename + ".png"));
+		
+	}
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class CorpPassLogin extends Web_Driver {
 
-	public void login(String nric, String name, String UEN, String role)
+/*	public void login(String nric, String name, String UEN, String role)
 	{
 		// set input variables to respective objects 
 		driver.findElement(By.xpath("//input[@name='CPUID']")).clear();
@@ -47,5 +47,5 @@ public class CorpPassLogin extends Web_Driver {
 	public void ValidateRole() {
 		log.error("Test Case Number: " + GetTestCase());
 		log.error("Invalid Role Not Checked");
-	}
+	}*/
 }

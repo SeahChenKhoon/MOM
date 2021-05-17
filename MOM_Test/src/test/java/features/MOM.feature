@@ -9,10 +9,10 @@ And He clicks on Development Area "Upgrade key business areas, such as adopt tec
 And He clicks on Functional Area "Innovation & Productivity" button
 And He clicks on 'Proceed' button to enter the form
 And He clicks on "Yes" in all Option in CHECK YOUR ELIGIBILITY form
-#And He inputs Name "027", Job Title "Manager" , Contact No "91234565", Email "hello@yahoo.com"
-#And He inputs Postal Code "400032"
-#And He inputs Level "14", Unit "226", BuildingName "Eunos Court"
-#And He inputs Addressee Name "Peter", Job Title "Project Manager", Email="hello@yahoo.com"
-#And He clicks on ContactDetailsSave
-#And He clicks on ContactDetailsNext
+And He inputs Name "027", Job Title "Manager" , Contact No "91234565", Email "hello@yahoo.com"
+And He inputs Postal Code "400032"
+And He inputs Level "14", Unit "226", BuildingName "Eunos Court"
+And He inputs Addressee Name "Peter", Job Title "Project Manager", Email="hello@yahoo.com"
+And He clicks on ContactDetailsSave
+And He clicks on ContactDetailsNext
 #And Close Browser

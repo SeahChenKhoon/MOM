@@ -1,5 +1,8 @@
 package pageFactory;
 
+import java.io.IOException;
+
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,7 +37,7 @@ public class CheckEligibility_PF extends Web_Driver  {
 	@FindBy(xpath="//button[@id='save-btn']")
 	WebElement btnSave;
 
-	public CheckEligibility_PF ()
+	public CheckEligibility_PF () throws IOException
 	{		
 		try
 		{
@@ -42,6 +45,7 @@ public class CheckEligibility_PF extends Web_Driver  {
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());			
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
@@ -49,7 +53,7 @@ public class CheckEligibility_PF extends Web_Driver  {
 		}
 	}
 
-	public  Boolean pageWait()
+	public  Boolean pageWait() throws IOException
 	{
 		try
 		{
@@ -60,15 +64,17 @@ public class CheckEligibility_PF extends Web_Driver  {
 
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 			return false;
 		}
 	}
 
-	public Boolean ClickYesForAllOptions()
+	public Boolean ClickYesForAllOptions() throws IOException
 	{
 		try
 		{
@@ -80,15 +86,17 @@ public class CheckEligibility_PF extends Web_Driver  {
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 			return false;
 		}
 	}
 
-	public Boolean ClickNoForAllOptions()
+	public Boolean ClickNoForAllOptions() throws IOException
 	{
 		try {
 			rdbSgRegisteredFalse.click();
@@ -99,15 +107,17 @@ public class CheckEligibility_PF extends Web_Driver  {
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);			
 			return false;
 		}
 	}
 
-	public Boolean Next_Click()
+	public Boolean Next_Click() throws IOException
 	{
 		try
 		{
@@ -116,16 +126,18 @@ public class CheckEligibility_PF extends Web_Driver  {
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);			
 			return false;
 		}
 	}
 
 
-	public Boolean Save_Click()
+	public Boolean Save_Click() throws IOException
 	{
 		try
 		{
@@ -135,10 +147,12 @@ public class CheckEligibility_PF extends Web_Driver  {
 		}
 		catch (Exception e)
 		{
+			TakeScreenShot(super.GetTestCase() + ".png");
 			log.error("Test Case Number: " + super.GetTestCase());
 			log.error("This is the Exception error: " + e.getMessage());
 			log.error("This is the Exception cause: " + e.getCause());
 			log.error(e.getStackTrace());
+			Assert.assertTrue(false);
 			return false;
 		}
 	}

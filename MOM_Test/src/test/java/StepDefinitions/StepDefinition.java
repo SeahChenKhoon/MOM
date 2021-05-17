@@ -12,6 +12,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pageFactory.CheckEligibility_PF;
+import pageFactory.ContactDetails_PF;
 import pageFactory.CorpPassPage_PF;
 import pageFactory.GrantAction_PF;
 import pageFactory.LoginPage_PF;
@@ -22,8 +23,7 @@ public class StepDefinition extends Web_Driver{
 
 	@Given("^Applicant Navigates to website \"([^\"]*)\", Test_case \"([^\"]*)\"$")
 	public void applicant_Navigates_to_website_Test_case(String url, String testCase) throws Throwable {
-		LoginPage_PF loginPage_PF= new LoginPage_PF(url);
-		loginPage_PF.writeCaseID(testCase);
+		LoginPage_PF loginPage_PF= new LoginPage_PF(url,testCase);
 		loginPage_PF.pageWait();
 		loginPage_PF.clickLogin();
 		loginPage_PF =null;
@@ -113,43 +113,44 @@ public class StepDefinition extends Web_Driver{
 			checkEligibility_PF.ClickNoForAllOptions();
 		else
 			checkEligibility_PF.ClickYesForAllOptions();
-//		checkEligibility_PF.Save_Click();
-//		checkEligibility_PF.Next_Click();
+		checkEligibility_PF.Save_Click();
+		checkEligibility_PF.Next_Click();
 		checkEligibility_PF = null;
 	}
 
 	@When("^He inputs Name \"([^\"]*)\", Job Title \"([^\"]*)\" , Contact No \"([^\"]*)\", Email \"([^\"]*)\"$")
 	public void he_inputs_Name_Job_Title_Contact_No_Email(String name, String jobTitle, String phone,String email) throws Throwable {
-		ContactDetails contactDetails = new ContactDetails();
+		ContactDetails_PF contactDetails_PF = new ContactDetails_PF();
 		// Wait for Contact Details Page to appear
-		contactDetails.pageWait();		
-		contactDetails.InputDetails(name, jobTitle, phone, email);
+		contactDetails_PF.pageWait();		
+		contactDetails_PF.InputDetails(name, jobTitle, phone, email);
 
-		contactDetails = null;
+		contactDetails_PF = null;
 	}
 
 	@When("^He sets AddressesSameAsPerson$")
 	public void he_sets_AddressesSameAsPerson() throws Throwable {
 		// Click on he_sets_AddressesSameAsPerson checkbox
-		ContactDetails contactDetails = new ContactDetails();
-		contactDetails =null;
+		ContactDetails_PF contactDetails_PF = new ContactDetails_PF();
+		contactDetails_PF.SameContactPerson_Click();
+		contactDetails_PF =null;
 	}
 
 	@When("^He sets Mailing Address Same As CompanyProfile$")
 	public void he_sets_Mailing_Address_Same_As_CompanyProfile() throws Throwable {
-		ContactDetails contactDetails = new ContactDetails();
+		ContactDetails_PF contactDetails_PF = new ContactDetails_PF();
 		//He clicks on "Same as registered address in Company Profile"
-		contactDetails.SameMailingAddress_Click();
-		contactDetails = null;	
+		contactDetails_PF.SameMailingAddress_Click();
+		contactDetails_PF = null;	
 	}
 
 
 	@When("^He sets Addresses Same As Person$")
 	public void he_sets_Addresses_Same_As_Person() throws Throwable {
-		ContactDetails contactDetails = new ContactDetails();
+		ContactDetails_PF contactDetails_PF = new ContactDetails_PF();
 		//He clicks on "Same as main contact person"
-		contactDetails.SameContactPerson_Click();
-		contactDetails = null;
+		contactDetails_PF.SameContactPerson_Click();
+		contactDetails_PF = null;
 	}
 
 
@@ -157,49 +158,49 @@ public class StepDefinition extends Web_Driver{
 	@When("^He inputs Postal Code \"([^\"]*)\"$")
 	public void he_inputs_Postal_Code(String postalCode) throws Throwable {
 		//User input Postal Code
-		ContactDetails contactDetails = new ContactDetails();
-		contactDetails.InputPostalCode(postalCode);
-		contactDetails = null;	
+		ContactDetails_PF contactDetails_PF = new ContactDetails_PF();
+		contactDetails_PF.InputPostalCode(postalCode);
+		contactDetails_PF = null;	
 	}
 
 	@Then("^Verify Blk \"([^\"]*)\" Street \"([^\"]*)\"$")
 	public void verify_Blk_Street(String block, String unitNumber) throws Throwable {
 		// System Verifies Postal Code
-		ContactDetails contactDetails = new ContactDetails();
-		contactDetails.VerifyPostalCode(block, unitNumber);
-		contactDetails = null;	
+		ContactDetails_PF contactDetails_PF = new ContactDetails_PF();
+		contactDetails_PF.VerifyPostalCode(block, unitNumber);
+		contactDetails_PF = null;	
 	}
 
 	@When("^He inputs Level \"([^\"]*)\", Unit \"([^\"]*)\", BuildingName \"([^\"]*)\"$")
 	public void he_inputs_Level_Unit_BuildingName(String level, String unit, String buildingName) throws Throwable {
 		// User input level, unit, buildingName into Mailing Address
-		ContactDetails contactDetails = new ContactDetails();
-		contactDetails.InputUnitLevelDetails(level, unit,buildingName);
-		contactDetails = null;	
+		ContactDetails_PF contactDetails_PF = new ContactDetails_PF();
+		contactDetails_PF.InputUnitLevelDetails(level, unit,buildingName);
+		contactDetails_PF = null;	
 	}
 
 	@When("^He inputs Addressee Name \"([^\"]*)\", Job Title \"([^\"]*)\", Email=\"([^\"]*)\"$")
 	public void he_inputs_Addressee_Name_Job_Title_Email(String name, String jobTitle, String email) throws Throwable {
 		// User input Name, Job Title, Email in Letter Of Offer Addressee
-		ContactDetails contactDetails = new ContactDetails();
-		contactDetails.InputAddresseeInfo(name, jobTitle,email);
-		contactDetails = null;	
+		ContactDetails_PF contactDetails_PF = new ContactDetails_PF();
+		contactDetails_PF.InputAddresseeInfo(name, jobTitle,email);
+		contactDetails_PF = null;	
 	}
 
 	@When("^He clicks on ContactDetailsSave$")
 	public void he_clicks_on_ContactDetailsSave() throws Throwable {
 		//He clicks on Save in Contact Details Page
-		ContactDetails contactDetails = new ContactDetails();
-		contactDetails.Save_Click();
-		contactDetails = null;	
+		ContactDetails_PF contactDetails_PF = new ContactDetails_PF();
+		contactDetails_PF.Save_Click();
+		contactDetails_PF = null;	
 	}
 
 	@When("^He clicks on ContactDetailsNext$")
 	public void he_clicks_on_ContactDetailsNext() throws Throwable {
 		//He clicks on Next in Contact Details Page
-		ContactDetails contactDetails = new ContactDetails();
-		contactDetails.Next_Click();
-		contactDetails = null;	
+		ContactDetails_PF contactDetails_PF = new ContactDetails_PF();
+		contactDetails_PF.Next_Click();
+		contactDetails_PF = null;	
 	}
 
 	@When("^He clicks on Activity$")
@@ -212,32 +213,32 @@ public class StepDefinition extends Web_Driver{
 	
 	@Then("^System verifies validity NRIC$")
 	public void system_verifies_validity_NRIC() throws Throwable {	
-		CorpPassLogin corpPassLogin = new CorpPassLogin();
-		corpPassLogin.ValidateNRIC();
-		corpPassLogin= null;
+		CorpPassPage_PF corpPassPage_PF = new CorpPassPage_PF();
+		corpPassPage_PF.ValidateNRIC();
+		corpPassPage_PF= null;
 	}
 
 	@Then("^System verifies Name validity$")
 	public void system_verifies_Name_validity() throws Throwable {
 		// Validate Name		
-		CorpPassLogin corpPassLogin = new CorpPassLogin();
-		corpPassLogin.ValidateName();
-		corpPassLogin= null;
+		CorpPassPage_PF corpPassPage_PF = new CorpPassPage_PF();
+		corpPassPage_PF.ValidateName();
+		corpPassPage_PF= null;
 	}
 	@Then("^System verifies Environment validity$")
 	public void system_verifies_Environment_validity() throws Throwable {
 		// Validate Environment
-		CorpPassLogin corpPassLogin = new CorpPassLogin();
-		corpPassLogin.ValidateEnv();
-		corpPassLogin= null;
+		CorpPassPage_PF corpPassPage_PF = new CorpPassPage_PF();
+		corpPassPage_PF.ValidateEnv();
+		corpPassPage_PF= null;
 	}
 
 	@Then("^System verifies Role validity$")
 	public void system_verifies_Role_validity() throws Throwable {
 		// Validate Role
-		CorpPassLogin corpPassLogin = new CorpPassLogin();
-		corpPassLogin.ValidateRole();
-		corpPassLogin= null;
+		CorpPassPage_PF corpPassPage_PF = new CorpPCorpPassPage_PFassLogin();
+		corpPassPage_PF.ValidateRole();
+		corpPassPage_PF= null;
 	}
 
 	@When("^Close Browser$")
